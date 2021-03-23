@@ -1,0 +1,20 @@
+version: '3.7'
+
+# https://habr.com/ru/company/ruvds/blog/450312/
+
+services:
+  server:
+    stdin_open: true
+    build: server/ 
+    volumes:
+      - "./server/src:/server"
+    ports: 
+      - 1234:1234
+  client:
+    stdin_open: true
+    build: client/ 
+    volumes:
+      - "./client/src:/client"
+    depends_on: 
+      - server
+    network_mode: host
