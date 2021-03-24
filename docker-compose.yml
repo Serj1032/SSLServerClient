@@ -7,14 +7,14 @@ services:
     stdin_open: true
     build: server/ 
     volumes:
-      - "./server/src:/server"
+      - "./server:/server"
     ports: 
       - 1234:1234
   client:
     stdin_open: true
     build: client/ 
     volumes:
-      - "./client/src:/client"
+      - "./client:/client"
     depends_on: 
       - server
     network_mode: host
